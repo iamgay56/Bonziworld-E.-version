@@ -225,6 +225,15 @@ let userCommands = {
 
         this.room.updateUser(this);
     },
+    "amplitude": function(amplitude) {
+        amplitude = parseInt(amplitude);
+
+        if (isNaN(amplitude)) return;
+
+        this.public.amplitude = amplitude;
+		
+        this.room.updateUser(this);
+    },
     "speed": function(speed) {
         speed = parseInt(speed);
 
