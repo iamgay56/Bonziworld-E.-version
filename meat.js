@@ -184,6 +184,12 @@ let userCommands = {
             target: sanitize(Utils.argsString(arguments))
         });
     },
+    "muted": function() {
+        this.room.emit("muted", {
+            guid: this.guid,
+            target: sanitize(Utils.argsString(arguments))
+        });
+    },
     "owo": function() {
         this.room.emit("owo", {
             guid: this.guid,
