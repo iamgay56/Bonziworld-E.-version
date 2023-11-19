@@ -174,6 +174,10 @@ let userCommands = {
         this.public.color = "pope";
         this.room.updateUser(this);
     },
+    "pope2": function() {
+        this.public.color = "peedy_pope";
+        this.room.updateUser(this);
+    },
     "asshole": function() {
         this.room.emit("asshole", {
             guid: this.guid,
