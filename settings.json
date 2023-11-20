@@ -147,7 +147,9 @@
 		"yellow",
 		"orange",
 		"white",
-		"dark_purple"
+		"dark_purple",
+		"guestgal",
+		"losky"
 	],
 	"banLength": 1440,
 	"port": 3000,
