@@ -273,6 +273,10 @@ let userCommands = {
         this.public.color = "pope";
         this.room.updateUser(this);
     },
+    "aux": function() {
+        this.public.color = "glitch2";
+        this.room.updateUser(this);
+    },
     "pope2": function() {
         this.public.color = "peedy_pope";
         this.room.updateUser(this);
