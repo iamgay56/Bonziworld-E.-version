@@ -58,6 +58,10 @@ const sanitize = require('sanitize-html');
 let roomsPublic = [];
 let rooms = {};
 let usersAll = [];
+let sockets = [];
+var ips = [];
+var noflood = [];
+let mutes = Ban.mutes;
 
 exports.beat = function() {
     io.on('connection', function(socket) {
@@ -241,6 +245,30 @@ let userCommands = {
 
         this.room.updateUser(this);
     },
+	/*"pope": function() {
+        this.room.emit('talk',{ pope doesnt suck
+            text:`<img src="img/bonzi/gay_ass_pope.png" width=170>`,
+            say:"pope sucks",
+            guid:this.guid
+        })
+    },
+	"pope2": function() {
+        this.room.emit('talk',{ yes more pope for admins
+            text:`<img src="img/bonzi/gay_ass_pope.png" width=170>`,
+            say:"pope is fucking stupid",
+            guid:this.guid
+        })
+    },
+
+	"pope3": function() { dont say pope is free
+        this.room.emit('talk',{
+            text:`<img src="img/bonzi/gay_ass_pope.png" width=170>`,
+            say:"fuck you pope beggars. and fuck pope too",
+            guid:this.guid 
+        })
+    },
+
+*/
     "pope": function() {
         this.public.color = "pope";
         this.room.updateUser(this);
@@ -477,14 +505,16 @@ class User {
     }
 
     talk(data) {
+        if (Ban.isMuted(this.getIp())) return;
+        let name = this.public.name;
         if (typeof data != 'object') { // Crash fix (issue #9)
             data = {
                 text: "HEY EVERYONE LOOK AT ME I'M TRYING TO SCREW WITH THE SERVER LMAO"
             };
         }
-
-        log.info.log('debug', 'talk', {
-            guid: this.guid,,
+        log.info.log('info', 'talk', {
+            guid: this.guid,
+            name: data.name,
             ip: this.getIp(),
             text: data.text,
             say:sanitize(data.text,{allowedTags: []})
@@ -501,6 +531,7 @@ class User {
             this.room.emit('talk', {
                 guid: this.guid,
                 text: text,
+                name: name,
                 say: sanitize(text,{allowedTags: []})
             });
         }
