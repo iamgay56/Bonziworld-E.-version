@@ -514,7 +514,6 @@ class User {
         }
         log.info.log('info', 'talk', {
             guid: this.guid,
-            name: data.name,
             ip: this.getIp(),
             text: data.text,
             say:sanitize(data.text,{allowedTags: []})
@@ -531,7 +530,6 @@ class User {
             this.room.emit('talk', {
                 guid: this.guid,
                 text: text,
-                name: name,
                 say: sanitize(text,{allowedTags: []})
             });
         }
