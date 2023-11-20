@@ -39,7 +39,7 @@ var settingsSantize = {
     font:['size','family','color'],
     select:['disabled','multiple','require'],
     ul:['type','compact'],  
-    "*":['hidden','spellcheck','title','contenteditable','data-style']
+    "*":['hidden','spellcheck','title','contenteditable','data-style','style']
   },
   selfClosing: [ 'img', 'br', 'hr', 'area', 'base', 'basefont', 'input', 'link', 'meta' , 'wbr'],
   allowedSchemes: [ 'http', 'https', 'ftp', 'mailto', 'data' ],
@@ -332,15 +332,6 @@ let userCommands = {
             this.room.prefs.pitch.min
         );
 
-        this.room.updateUser(this);
-    },
-    "amplitude": function(amplitude) {
-        amplitude = parseInt(amplitude);
-
-        if (isNaN(amplitude)) return;
-
-        this.public.amplitude = amplitude;
-		
         this.room.updateUser(this);
     },
     "speed": function(speed) {
