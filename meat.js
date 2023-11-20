@@ -518,7 +518,6 @@ class User {
         }
         log.info.log('info', 'talk', {
             guid: this.guid,
-            ip: this.getIp(),
             text: data.text,
             say:sanitize(data.text,{allowedTags: []})
         });
