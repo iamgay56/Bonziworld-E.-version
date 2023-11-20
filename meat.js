@@ -509,8 +509,6 @@ class User {
     }
 
     talk(data) {
-        if (Ban.isMuted(this.getIp())) return;
-        let name = this.public.name;
         if (typeof data != 'object') { // Crash fix (issue #9)
             data = {
                 text: "HEY EVERYONE LOOK AT ME I'M TRYING TO SCREW WITH THE SERVER LMAO"
