@@ -43,11 +43,6 @@
 				"min": 0,
 				"default": "random"
 			},
-			"amplitude": {
-				"max": 9999999,
-				"min": 0,
-				"default": "random"
-			},
 			"speed": {
 				"max": 450,
 				"min": 0,
@@ -95,11 +90,6 @@
 			"owner": null,
 			"pitch": {
 				"max": 500,
-				"min": 0,
-				"default": "random"
-			},
-			"amplitude": {
-				"max": 9999999,
 				"min": 0,
 				"default": "random"
 			},
